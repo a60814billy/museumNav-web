@@ -33,7 +33,7 @@ class ActivityController < ApplicationController
     end
 
     if params[:activity].has_key? :ticket_type
-      if params[:activity][:ticket_type] == true
+      if params[:activity][:ticket_type] == '1'
         @activity.ticket_auth_code = SecureRandom.uuid
       end
     end
