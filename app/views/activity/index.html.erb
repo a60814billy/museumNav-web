@@ -1,0 +1,56 @@
+<div class="ui segment">
+
+  <%= link_to 'New', :controller => 'activity', :action => 'new' %>
+
+  <table class="ui table">
+    <thead>
+    <tr>
+      <th>id</th>
+      <th>title</th>
+      <th>pic</th>
+      <th>description</th>
+      <th>start date</th>
+      <th>end date</th>
+      <th>Ticket Type</th>
+      <th>Ticket Authentication Code</th>
+      <th></th>
+    </tr>
+    </thead>
+    <tbody>
+    <% @activities.each do |activity| %>
+        <tr>
+          <td><%= activity.id %></td>
+          <td><%= activity.title %></td>
+          <td>
+            <% if activity.pic %>
+                <img src="/image/<%= activity.pic %>" style="max-width: 200px;max-height: 200px;"/>
+            <% end %>
+          </td>
+          <td><%= truncate(activity.description, length: 50) %></td>
+          <td><%= activity.start_date %></td>
+          <td><%= activity.end_date %></td>
+          <td>
+            <% if activity.ticket_type %>
+                同碼認證
+            <% else %>
+                異碼認證
+            <% end %>
+          </td>
+          <td>
+            <img src="<%= activity.qrcode %>" style="width: 150px"/>
+          </td>
+          <td>
+            <p><%= link_to 'Show', :controller => 'activity', :action => 'show', :id => activity %></p>
+
+            <p><%= link_to 'Show Exhib', :controller => 'exhib', :action => 'index', :activity_id => activity %></p>
+            <% unless activity.ticket_type %>
+                <p><%= link_to 'Ticket Manager', :controller => 'ticket', :action => 'index', :activity_id => activity %></p>
+            <% end %>
+            <!--<p><%= link_to 'Edit', :controller => 'activity', :action => 'edit', :id => activity %></p>-->
+            <p><%= link_to 'Delete', {:controller => 'activity', :action => 'destroy', :id => activity}, method: :delete %></p>
+          </td>
+        </tr>
+    <% end %>
+    </tbody>
+  </table>
+</div>

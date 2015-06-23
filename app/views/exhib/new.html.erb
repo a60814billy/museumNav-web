@@ -1,0 +1,19 @@
+<div class="ui segment">
+  <%= form_for @exhibit, :url => {:controller => 'exhib', :action => 'create'} do |f| %>
+
+      <p><%= f.label :name, 'Name' %></p>
+      <p><%= f.text_field :name %></p>
+
+      <p><%= f.label :pic, 'Image' %></p>
+      <p><%= f.file_field :pic %></p>
+
+      <p><%= f.label :src, 'Sound file' %></p>
+      <p><%= f.file_field :src %></p>
+
+      <p><%= f.label :beacon, 'Beacon' %></p>
+      <p><%= f.text_field :beacon %></p>
+
+      <%= f.submit "Create" %>
+
+  <% end %>
+</div>

@@ -1,0 +1,24 @@
+<div class="ui segment">
+  <p><%= link_to '<Back', :controller => 'activity', :action => 'index' %></p>
+  <%= link_to 'New', :controller => 'ticket', :action => 'new' %>
+
+  <table class="ui table">
+    <thead>
+    <tr>
+      <th>id</th>
+      <th>ticket authentication code</th>
+      <th>QR Code</th>
+    </tr>
+    </thead>
+    <tbody>
+    <% @tickets.each do |ticket| %>
+        <tr>
+          <td><%= ticket.id %></td>
+          <td><%= ticket.ticket_authentication_code %></td>
+          <td><img src="<%= ticket.qrcode%>" style="width: 150px;" /> </td>
+        </tr>
+    <% end %>
+    </tbody>
+  </table>
+  <%= will_paginate @tickets %>
+</div>

@@ -1,0 +1,39 @@
+<div class="ui segment">
+
+  <p><%= link_to '<Back', :controller => 'activity', :action => 'index' %></p>
+
+  <p><%= link_to 'New', :controller => 'exhib', :action => 'new' %></p>
+
+  <table class="ui table">
+    <thead>
+    <tr>
+      <th>id</th>
+      <th>name</th>
+      <th>Image</th>
+      <th>Audio</th>
+      <th>Beacon id</th>
+      <th></th>
+    </tr>
+    </thead>
+    <tbody>
+    <% @exhibits.each do |exhib| %>
+        <tr>
+          <td><%= exhib.id %></td>
+          <td><%= exhib.name %></td>
+          <td>
+            <% if exhib.pic %>
+                <img src="/image/<%= exhib.pic %>" style="max-width: 200px;max-height: 200px;"/>
+            <% end %>
+          </td>
+          <td><%= exhib.src %></td>
+          <td><%= exhib.beacon %></td>
+          <td>
+            <!--<%= link_to 'Edit', :controller => 'exhib', :action => 'edit', :id => exhib %>-->
+            <%= link_to 'Delete', {controller: 'exhib',action: 'destroy', id: exhib}, method: :delete %>
+          </td>
+
+        </tr>
+    <% end %>
+    </tbody>
+  </table>
+</div>

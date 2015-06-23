@@ -1,0 +1,29 @@
+<div class="ui segment">
+  <%= form_for @activity, :url => {:controller => 'activity', :action => 'create'} do |f| %>
+
+      <p><%= f.label :title, 'Title' %></p>
+
+      <p><%= f.text_field :title %></p>
+
+      <p><%= f.label :description, 'Description' %></p>
+
+      <p><%= f.text_area :description %></p>
+
+      <p><%= f.label :pic, 'Image' %></p>
+
+      <p><%= f.file_field :pic %></p>
+
+      <p><%= f.label :start_date, 'Start Date' %></p>
+
+      <p><%= f.date_select :start_date %></p>
+
+      <p><%= f.label :end_date, 'End Date' %></p>
+
+      <p><%= f.date_select :end_date %></p>
+
+      <p><%= f.check_box :ticket_type %> <%= f.label :ticket_type, '票券驗證碼是否相同' %></p>
+
+      <%= f.submit "Create" %>
+
+  <% end %>
+</div>
